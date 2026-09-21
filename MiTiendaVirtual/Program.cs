@@ -11,7 +11,7 @@ namespace MiTiendaVirtual
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<TiendaVirtualDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("TiendaVirtualDBConn")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionLocal")));
 
 
             // Add services to the container.

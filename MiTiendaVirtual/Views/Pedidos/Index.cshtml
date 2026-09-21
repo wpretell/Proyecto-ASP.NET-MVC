@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MiTiendaVirtual.Models.Pedido>
+
+@{
+    ViewData["Title"] = "PEDIDOS";
+}
+
+<h1>Lista de Pedidos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fecha</th>
+            <th>Monto Total</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FechaHora?.ToString("dd/MM/yyyy")</td>
+                <td>@item.Total</td>
+                <td>@item.Estado</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; <span id="fechaHoraServidor">@DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span> - MiTiendaVirtual
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+
+<script>
+    function actualizarFechaHora() {
+        const elemento = document.getElementById("fechaHoraServidor");
+
+        let ahora = new Date();
+
+        let fechaHora =
+            ahora.toLocaleDateString('es-PE') + " " +
+            ahora.toLocaleTimeString('es-PE');
+
+        elemento.textContent = fechaHora;
+    }
+
+    setInterval(actualizarFechaHora, 1000);
+</script>
+</body>
+</html>

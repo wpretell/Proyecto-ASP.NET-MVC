@@ -1,5 +1,4 @@
 @model IEnumerable<MiTiendaVirtual.Models.Producto>
-
 @{
     ViewData["Title"] = "PRODUCTOS";
 }
@@ -14,6 +13,7 @@
             <th>Precio</th>
             <th>Destacado</th>
             <th>Activo</th>
+            <th>Categoría</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +25,7 @@
                 <td>@item.Precio</td>
                 <td>@item.Destacado</td>
                 <td>@Html.DisplayFor(modelItem => item.Activo)</td>
+                <td>@item.IdCategoriaNavigation?.Nombre</td>
             </tr>
         }
     </tbody>

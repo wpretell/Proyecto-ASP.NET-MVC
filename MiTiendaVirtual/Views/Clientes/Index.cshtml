@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MiTiendaVirtual .Models.Cliente>
+
+@{
+    ViewData["Title"] = "CLIENTES";
+}
+
+<h1>Lista de Clientes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombres y ApelLidos</th>
+            <th>DNI</th>
+            <th>TeLéfono</th>
+            <th>Correo</th>
+            <th>Dirección</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nombres @item.Apellidos</td>
+                <td>@item.Dni</td>
+                <td>@item.Telefono</td>
+                <td>@item.Correo</td>
+                <td>@item.Direccion</td>
+            </tr>
+        }
+    </tbody>
+</table>

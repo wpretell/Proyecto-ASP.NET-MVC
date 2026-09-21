@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MiTiendaVirtual.Models;
 
 namespace MiTiendaVirtual.Controllers
@@ -11,11 +12,13 @@ namespace MiTiendaVirtual.Controllers
 
             using (TiendaVirtualDbContext BD = new TiendaVirtualDbContext())
             {
-                listaProductos = (from p in BD.Producto select p).ToList();
+                listaProductos = (from p in BD.Producto
+                                  .Include(c => c.IdCategoriaNavigation)
+                                  select p
+                                 ).ToList();
             }
 
             return View(listaProductos);
-
         }
     }
 }
