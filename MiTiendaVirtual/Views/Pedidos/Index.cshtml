@@ -27,31 +27,3 @@
         }
     </tbody>
 </table>
-
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; <span id="fechaHoraServidor">@DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span> - MiTiendaVirtual
-    </div>
-</footer>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
-
-<script>
-    function actualizarFechaHora() {
-        const elemento = document.getElementById("fechaHoraServidor");
-
-        let ahora = new Date();
-
-        let fechaHora =
-            ahora.toLocaleDateString('es-PE') + " " +
-            ahora.toLocaleTimeString('es-PE');
-
-        elemento.textContent = fechaHora;
-    }
-
-    setInterval(actualizarFechaHora, 1000);
-</script>
-</body>
-</html>
