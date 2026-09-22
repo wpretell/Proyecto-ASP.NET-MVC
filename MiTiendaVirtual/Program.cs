@@ -11,7 +11,7 @@ namespace MiTiendaVirtual
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<TiendaVirtualDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionLocal")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionExpress")));
 
 
             // Add services to the container.
@@ -28,16 +28,15 @@ namespace MiTiendaVirtual
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
-                .WithStaticAssets();
-
+                pattern: "{controller=Home}/{action=Index}/{id?}");
             app.Run();
         }
     }
